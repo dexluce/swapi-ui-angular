@@ -6,18 +6,18 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { LoginFormComponent } from './login-form/login-form.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ListComponent } from './list/list.component';
 import { ListItemComponent } from './list-item/list-item.component';
+import { SearchFormComponent } from './search-form/search-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
     LoginFormComponent,
-    SearchBarComponent,
     ListComponent,
-    ListItemComponent
+    ListItemComponent,
+    SearchFormComponent
   ],
   imports: [
     BrowserModule,
