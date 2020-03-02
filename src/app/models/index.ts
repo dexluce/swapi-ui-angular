@@ -3,6 +3,7 @@ import People from './people';
 import Planet from './planet';
 import Species from './species';
 import Starship from './starship';
+import User from './user';
 import Vehicle from './vehicle';
 
 type SearchResult = Array<Item>;
@@ -26,5 +27,6 @@ export {
     SearchResult,
     Species,
     Starship,
+    User,
     Vehicle
 };
