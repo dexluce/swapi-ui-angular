@@ -8,23 +8,23 @@ import Vehicle from './vehicle';
 type SearchResult = Array<Item>;
 type Item = Film | Species | People | Planet | Starship | Vehicle;
 type Filters = {
-    [key: string]: boolean
-    film: boolean,
-    people: boolean,
-    planet: boolean,
-    species: boolean,
-    starship: boolean,
-    vehicle: boolean,
+  [key: string]: boolean
+  film: boolean,
+  people: boolean,
+  planet: boolean,
+  species: boolean,
+  starship: boolean,
+  vehicle: boolean,
 }
 
 export {
-    Filters,
-    Film,
-    Item,
-    People,
-    Planet,
-    SearchResult,
-    Species,
-    Starship,
-    Vehicle
+  Filters,
+  Film,
+  Item,
+  People,
+  Planet,
+  SearchResult,
+  Species,
+  Starship,
+  Vehicle
 };
