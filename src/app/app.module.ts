@@ -10,21 +10,31 @@ import { ListComponent } from './components/list/list.component';
 import { ListItemComponent } from './components/list-item/list-item.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 
+import {
+  SearchService,
+  SwapiService,
+  UserService
+} from './services';
+
 @NgModule({
   declarations: [
     AppComponent,
-    TopBarComponent,
-    LoginFormComponent,
     ListComponent,
     ListItemComponent,
-    SearchFormComponent
+    LoginFormComponent,
+    SearchFormComponent,
+    TopBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    SearchService,
+    SwapiService,
+    UserService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

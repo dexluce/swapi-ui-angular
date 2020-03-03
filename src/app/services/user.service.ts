@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
+import { ReplaySubject, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +10,12 @@ export class UserService {
 
   constructor() { }
 
-  /** This could be in a JWT service */
+  // This could be in a JWT service
   getToken(): String {
     return window.localStorage['jwtToken'];
   }
 
-  /** This could be in a JWT service */
+  // This could be in a JWT service
   saveToken(token: String) {
     window.localStorage['jwtToken'] = token;
   }
@@ -28,8 +28,10 @@ export class UserService {
     }
   }
 
-  login(credentials) {
+  login(credentials): Observable<boolean> {
     // we should do a api call to auth. But for now we just login by default
     this.isAuthenticatedSubject.next(true);
+    // We return a observable boolean. It's overkill for our use case but in real world, we would have an observable here.
+    return of(true);
   }
 }
