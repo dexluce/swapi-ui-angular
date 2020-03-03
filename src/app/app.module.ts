@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
@@ -9,12 +10,15 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { ListComponent } from './components/list/list.component';
 import { ListItemComponent } from './components/list-item/list-item.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
+import { SwapiListLayoutComponent } from './components/swapi-list-layout/swapi-list-layout.component';
 
 import {
   SearchService,
   SwapiService,
   UserService
 } from './services';
+
+import { AuthentificationGuard } from './guards/authentification.guard';
 
 @NgModule({
   declarations: [
@@ -23,14 +27,18 @@ import {
     ListItemComponent,
     LoginFormComponent,
     SearchFormComponent,
-    TopBarComponent
+    TopBarComponent,
+    SwapiListLayoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
+    AuthentificationGuard,
     SearchService,
     SwapiService,
     UserService,

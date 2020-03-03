@@ -1,1 +1,21 @@
-<p>login-form works!</p>
+<form [formGroup]="authForm" (ngSubmit)="submitForm()">
+  <fieldset [disabled]="isSubmitting">
+    <fieldset class="form-group">
+      <input
+      formControlName="username"
+      placeholder="Username"
+      class="form-control"
+      type="text" />
+    </fieldset>
+    <fieldset class="form-group">
+      <input
+      formControlName="password"
+      placeholder="Password"
+      class="form-control"
+      type="password" />
+    </fieldset>
+    <button class="btn" [disabled]="!authForm.valid" type="submit">
+      login
+    </button>
+  </fieldset>
+</form>
