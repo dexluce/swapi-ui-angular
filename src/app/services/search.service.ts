@@ -19,7 +19,7 @@ export class SearchService {
   // Local search, search a specific type on the api
   private async _search(_type: SwapiType, _search: string): Promise<Array<Item>> {
     return this.swapiService.get(`/${_type}/?search=${_search}`)
-    .then(data => data.results.map((result: Item) => ({...result, type: _type})))
+    .then(data => data.results.map((result: Item) => ({...result, type: SwapiType[_type]})))
   }
 
   // Global search, trigger all swapi type searchs

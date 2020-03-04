@@ -3,7 +3,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, combineReducers, createReducer } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -28,6 +28,7 @@ import { swapiReducer } from './store/swapi.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { SearchEffects } from './store/swapi.effects';
 import { environment } from 'src/environments/environment';
+import { SwapiItemToReadableNamePipe } from './pipes/swapi-item-to-readable-name.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { environment } from 'src/environments/environment';
     LoginFormComponent,
     SearchFormComponent,
     TopBarComponent,
-    SwapiListLayoutComponent
+    SwapiListLayoutComponent,
+    SwapiItemToReadableNamePipe
   ],
   imports: [
     BrowserModule,
@@ -46,6 +48,7 @@ import { environment } from 'src/environments/environment';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    // not the right way to get an app store
     StoreModule.forRoot({app: swapiReducer}),
     EffectsModule.forRoot([SearchEffects]),
     StoreDevtoolsModule.instrument({

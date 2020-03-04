@@ -1,1 +1,6 @@
 <p>list works!</p>
+<ul>
+  <li *ngFor="let item of (items | async)">
+    {{item | swapiItemToReadableName}}
+  </li>
+</ul>
