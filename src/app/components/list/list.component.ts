@@ -4,7 +4,7 @@ import { AppState } from 'src/app/store/swapi.state';
 import { Search } from 'src/app/store/swapi.actions';
 import { Item } from 'src/app/models';
 import { Observable } from 'rxjs';
-import { selectSearchResult } from 'src/app/store/swapi.selectors';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -14,7 +14,11 @@ import { selectSearchResult } from 'src/app/store/swapi.selectors';
 export class ListComponent implements OnInit {
   items: Observable<Array<Item>>;
   
-  constructor(private store: Store<AppState>) { }
+  itemClicked(item: Item) {
+    this.router.navigate(['/', item.url]);
+  }
+
+  constructor(private store: Store<AppState>, private router: Router) { }
 
   ngOnInit(): void {
     this.store.dispatch(new Search());

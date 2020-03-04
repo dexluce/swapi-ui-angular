@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let item of (items | async)">
+  <li *ngFor="let item of (items | async)" (click)="itemClicked(item)">
     {{item | swapiItemToReadableName}}
   </li>
 </ul>
