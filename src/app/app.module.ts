@@ -15,7 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { ListComponent } from './components/list/list.component';
-import { ListItemComponent } from './components/list-item/list-item.component';
+import { ItemComponent } from './components/item/item.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { SwapiListLayoutComponent } from './components/swapi-list-layout/swapi-list-layout.component';
 
@@ -36,7 +36,7 @@ import { SwapiItemToReadableNamePipe } from './pipes/swapi-item-to-readable-name
   declarations: [
     AppComponent,
     ListComponent,
-    ListItemComponent,
+    ItemComponent,
     LoginFormComponent,
     SearchFormComponent,
     TopBarComponent,
