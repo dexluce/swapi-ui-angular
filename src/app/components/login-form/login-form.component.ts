@@ -28,13 +28,6 @@ export class LoginFormComponent {
     this.isSubmitting = true;
 
     const credentials = this.authForm.value;
-    this.userService.login(credentials)
-    .subscribe(
-      data => this.router.navigateByUrl('/'),
-      err => {
-        this.isSubmitting = false;
-        // Do error handeling her if we actually login to an api
-      }
-    );
+    this.userService.login(credentials).then(() => this.router.navigateByUrl('/'));
   }
 }

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,10 +26,10 @@ export class UserService {
     }
   }
 
-  login(credentials): Observable<boolean> {
+  async login(credentials): Promise<boolean> {
     // we should do a api call to auth. But for now we just login by default
     this.saveToken("Random false token just for this login without api")
     this.isAuthenticated = true;
-    return of(true);
+    return true;
   }
 }
