@@ -1,4 +1,4 @@
-<p>search-form works!</p>
+<input (keydown.enter)="searchChanged($event.target.value)">
 <ul>
   <li *ngFor="let type of (_swapiType | keyvalue); let i = index">
     <mat-slide-toggle
