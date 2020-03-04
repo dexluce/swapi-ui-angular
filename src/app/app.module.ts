@@ -28,7 +28,7 @@ import {
 import { AuthentificationGuard } from './guards/authentification.guard';
 import { swapiReducer } from './store/swapi.reducers';
 import { EffectsModule } from '@ngrx/effects';
-import { SearchEffects } from './store/swapi.effects';
+import { SwapiEffects } from './store/swapi.effects';
 import { environment } from 'src/environments/environment';
 import { SwapiItemToReadableNamePipe } from './pipes/swapi-item-to-readable-name.pipe';
 
@@ -52,7 +52,7 @@ import { SwapiItemToReadableNamePipe } from './pipes/swapi-item-to-readable-name
     ReactiveFormsModule,
     // not the right way to get an app store
     StoreModule.forRoot({app: swapiReducer}),
-    EffectsModule.forRoot([SearchEffects]),
+    EffectsModule.forRoot([SwapiEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

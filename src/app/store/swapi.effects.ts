@@ -10,7 +10,7 @@ import {
 import { SearchService } from '../services/search.service';
 
 @Injectable()
-export class SearchEffects {
+export class SwapiEffects {
   @Effect()
   search = this.actions.pipe(
     ofType(ESwapiActions.Search),
