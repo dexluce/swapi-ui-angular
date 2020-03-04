@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
-import { switchMap, switchMapTo } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 
 import {
   ESwapiActions,
-  SearchStart,
   SearchError,
   SearchSuccess,
-  Search
 } from './swapi.actions';
 import { SearchService } from '../services/search.service';
 
