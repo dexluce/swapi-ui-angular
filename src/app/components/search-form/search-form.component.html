@@ -1,1 +1,11 @@
 <p>search-form works!</p>
+<ul>
+  <li *ngFor="let type of (_swapiType | keyvalue); let i = index">
+    <mat-slide-toggle
+      [checked]="(filters | async)[type.key]"
+      (change)="filterChanged(type.key)">
+      {{type.value}}
+    </mat-slide-toggle>
+  </li>
+</ul>
+

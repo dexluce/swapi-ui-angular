@@ -3,9 +3,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StoreModule, combineReducers, createReducer } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule } from '@angular/common/http';
+
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
@@ -55,6 +57,7 @@ import { SwapiItemToReadableNamePipe } from './pipes/swapi-item-to-readable-name
       maxAge: 25,
       logOnly: environment.production,
     }),
+    MatSlideToggleModule,
   ],
   providers: [
     AuthentificationGuard,

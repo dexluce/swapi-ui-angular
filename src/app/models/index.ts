@@ -6,12 +6,12 @@ import Starship from './starship';
 import Vehicle from './vehicle';
 
 export enum SwapiType {
-  films,
-  species,
-  people,
-  planets,
-  starships,
-  vehicles,
+  films = "films",
+  species = "species",
+  people = "people",
+  planets = "planets",
+  starships = "starships",
+  vehicles = "vehicles",
 }
 
 type Item = Film | Species | People | Planet | Starship | Vehicle;

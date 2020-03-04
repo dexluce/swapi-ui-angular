@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { Filters, Item } from '../models';
+import { Item, SwapiType } from '../models';
 
 export enum ESwapiActions {
   Search = "[Swapi] search",
@@ -38,7 +38,7 @@ export class SearchChanged implements Action {
 export class FiltersChanged implements Action {
   public readonly type = ESwapiActions.FiltersChanged;
   
-  constructor(public payload: Filters) {}
+  constructor(public payload: SwapiType) {}
 }
 
 export type SwapiActions = Search | SearchStart | SearchError | SearchSuccess | SearchChanged | FiltersChanged;

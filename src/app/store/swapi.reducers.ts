@@ -9,7 +9,10 @@ export const swapiReducer = (
     case ESwapiActions.FiltersChanged:
       return {
         ...state,
-        filters: action.payload
+        filters: {
+          ...state.filters,
+          [action.payload]: !state.filters[action.payload]
+        }
       }
       
     case ESwapiActions.SearchChanged:
