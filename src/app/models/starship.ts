@@ -1,7 +1,7 @@
-import { Film } from '.';
+import { Film, SwapiType } from '.';
 
 export default interface Starship {
-  type: "Starship"
+  type: SwapiType.starships;
   id: number;
   edited: string;
   created: string;

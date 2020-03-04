@@ -1,7 +1,7 @@
-import { Film } from '.';
+import { Film, SwapiType } from '.';
 
 export default interface Vehicle {
-  type: "Vehicle"
+  type: SwapiType.vehicles;
   id: number;
   edited: string;
   created: string;

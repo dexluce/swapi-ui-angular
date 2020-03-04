@@ -5,16 +5,19 @@ import Species from './species';
 import Starship from './starship';
 import Vehicle from './vehicle';
 
-type SearchResult = Array<Item>;
+export enum SwapiType {
+  films,
+  species,
+  people,
+  planets,
+  starships,
+  vehicles,
+}
+
 type Item = Film | Species | People | Planet | Starship | Vehicle;
+
 type Filters = {
-  [key: string]: boolean
-  film: boolean,
-  people: boolean,
-  planet: boolean,
-  species: boolean,
-  starship: boolean,
-  vehicle: boolean,
+  [key in SwapiType]: boolean
 }
 
 export {
@@ -23,7 +26,6 @@ export {
   Item,
   People,
   Planet,
-  SearchResult,
   Species,
   Starship,
   Vehicle

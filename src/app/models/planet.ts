@@ -1,7 +1,7 @@
-import { Film } from '.';
+import { Film, SwapiType } from '.';
 
 export default interface Planet {
-  type: "Planet"
+  type: SwapiType.planets;
   id: number;
   edited: string;
   created: string;

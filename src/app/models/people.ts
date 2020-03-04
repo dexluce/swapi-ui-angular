@@ -1,7 +1,7 @@
-import { Film, Species, Starship, Vehicle } from '.';
+import { Film, Species, Starship, Vehicle, SwapiType } from '.';
 
 export default interface People {
-  type: "People"
+  type: SwapiType.people;
   id: number;
   edited: string;
   created: string;

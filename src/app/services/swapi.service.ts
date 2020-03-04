@@ -17,8 +17,9 @@ export class SwapiService {
     return throwError(error.error);
   }
 
-  get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
+  // Todo: get types for Http promise from Swapi
+  get(path: string, params: HttpParams = new HttpParams()): Promise<any> {
     return this.http.get(`${environment.api_url}${path}`, { params })
-      .pipe(catchError(this.formatErrors));
+      .pipe(catchError(this.formatErrors)).toPromise();
   }
 }

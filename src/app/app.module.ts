@@ -1,6 +1,11 @@
+// This file is getting too large. TODO: Split in modules
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
@@ -19,6 +24,10 @@ import {
 } from './services';
 
 import { AuthentificationGuard } from './guards/authentification.guard';
+import { swapiReducer } from './store/swapi.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { SearchEffects } from './store/swapi.effects';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -34,8 +43,15 @@ import { AuthentificationGuard } from './guards/authentification.guard';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({app: swapiReducer}),
+    EffectsModule.forRoot([SearchEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
   ],
   providers: [
     AuthentificationGuard,
