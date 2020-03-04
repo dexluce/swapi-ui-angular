@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { SwapiState } from 'src/app/store/swapi.state';
+import { Search } from 'src/app/store/swapi.actions';
 
 @Component({
   selector: 'app-list',
@@ -7,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _store: Store<SwapiState>) { }
 
   ngOnInit(): void {
+    this._store.dispatch(new Search());
   }
 
 }
