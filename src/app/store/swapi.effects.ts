@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, switchMapTo } from 'rxjs/operators';
 
 import {
   ESwapiActions,
@@ -15,13 +15,11 @@ import { SearchService } from '../services/search.service';
 export class SearchEffects {
   @Effect()
   search = this.actions.pipe(
-    ofType<Search>(ESwapiActions.Search),
-    switchMap(() => {
-      new SearchStart();
-      return this.searchService.search()
-        .then((httpResult) => new SearchSuccess(httpResult))
-        .catch(() => new SearchError())
-    }),
+    ofType(ESwapiActions.Search),
+    switchMap(() => this.searchService.search()
+      .then((items) => new SearchSuccess(items))
+      .catch(() => new SearchError())
+    )
   );
 
   constructor(

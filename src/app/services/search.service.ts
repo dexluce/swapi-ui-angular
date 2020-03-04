@@ -5,7 +5,7 @@ import { take } from 'rxjs/operators';
 import { Item, SwapiType } from '../models';
 import { SwapiService } from './swapi.service';
 import { AppState } from '../store/swapi.state';
-import { Observable, forkJoin } from 'rxjs';
+import { SearchStart } from '../store/swapi.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,8 @@ export class SearchService {
       for (let type in SwapiType) {
         if (filters[type]) searchs.push(this._search(SwapiType[type.toString()], search));
       }
-      // Trigger all types promise
+      // Trigger all types get + start search event
+      this.swapiStore.dispatch(new SearchStart());
       return (await Promise.all(searchs)).flat();
     })
   }
