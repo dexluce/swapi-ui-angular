@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/swapi.state';
 import { Observable } from 'rxjs';
 import { FiltersChanged, Search, SearchChanged } from 'src/app/store/swapi.actions';
+import { SearchService } from 'src/app/services';
 
 @Component({
   selector: 'app-search-form',
@@ -17,16 +18,17 @@ export class SearchFormComponent implements OnInit {
 
   searchChanged(search: string) {
     this.store.dispatch(new SearchChanged(search));
-    this.store.dispatch(new Search());
+    this.searchService.search();
   }
 
   filterChanged(type: SwapiType) {
     this.store.dispatch(new FiltersChanged(type));
-    this.store.dispatch(new Search());
+    this.searchService.search();
   }
 
   constructor(
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private searchService: SearchService,
   ) { }
 
   ngOnInit(): void {

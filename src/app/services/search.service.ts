@@ -5,7 +5,7 @@ import { take } from 'rxjs/operators';
 import { Item, SwapiType } from '../models';
 import { SwapiService } from './swapi.service';
 import { AppState } from '../store/swapi.state';
-import { SearchStart } from '../store/swapi.actions';
+import { SearchStart, SearchSuccess, SearchError } from '../store/swapi.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,7 @@ export class SearchService {
   }
 
   // Global search, trigger all swapi type searchs
-  public async search(): Promise<Array<Item>> {
+  public async search() {
     // Get search and filter from store
     return this.swapiStore.pipe(take(1)).toPromise().then(async ({ app: { filters, search } }) => {
       // Create a array of promises in order to trigger all search at once
@@ -32,9 +32,15 @@ export class SearchService {
       for (let type in SwapiType) {
         if (filters[type]) searchs.push(this._search(SwapiType[type.toString()], search));
       }
-      // Trigger all types get + start search event
+
+      // Trigger search
       this.swapiStore.dispatch(new SearchStart());
-      return (await Promise.all(searchs)).flat();
+      try {
+        const searchResult = (await Promise.all(searchs)).flat();
+        this.swapiStore.dispatch(new SearchSuccess(searchResult));
+      } catch (e) {
+        this.swapiStore.dispatch(new SearchError());
+      }
     })
   }
 }
