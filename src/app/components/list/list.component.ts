@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/swapi.state';
-import { Search } from 'src/app/store/swapi.actions';
 import { Item } from 'src/app/models';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -29,5 +28,4 @@ export class ListComponent implements OnInit {
     this.searchService.search();
     this.items = this.store.select((store) => store.app.searchResult);
   }
-
 }

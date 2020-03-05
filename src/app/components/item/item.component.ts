@@ -1,9 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/store/swapi.state';
 import { Item } from 'src/app/models';
+import { SwapiService } from 'src/app/services';
 
 @Component({
   selector: 'app-item',
@@ -15,12 +14,15 @@ export class ItemComponent implements OnInit, OnDestroy {
   item: Observable<Item>;
   private subscribtionToUrlParam: Subscription;
 
-  constructor(private route: ActivatedRoute, private store: Store<AppState>) { }
+  constructor(
+    private route: ActivatedRoute,
+    private swapiService: SwapiService,
+  ) { }
 
   ngOnInit() {
     this.subscribtionToUrlParam = this.route.params.subscribe((params) => {
-       this.url = params['itemUrl'];
-       this.item = this.store.select(state => state.app.searchResult.find(item => item.url === this.url))
+      this.url = params['itemUrl'];
+      this.item = this.swapiService.getItemByUrl(this.url);
     });
   }
 

@@ -21,6 +21,7 @@ export const swapiReducer = (
         search: action.payload
       }
 
+    case ESwapiActions.GetItemByUrlStart:
     case ESwapiActions.SearchStart:
       return {
         ...state,
@@ -28,6 +29,7 @@ export const swapiReducer = (
         loading: true
       }
     
+    case ESwapiActions.GetItemByUrlError:
     case ESwapiActions.SearchError:
       return {
         ...state,
@@ -36,13 +38,23 @@ export const swapiReducer = (
       }
 
     case ESwapiActions.SearchSuccess:
+      var urls = new Set(state.items.map(item => item.url));
       return {
         ...state,
+        items: [...state.items, ...action.payload.filter(item => !urls.has(item.url))],
         searchResult: action.payload,
         error: false,
         loading: false
       }
 
+    case ESwapiActions.GetItemByUrlSuccess:
+      return {
+        ...state,
+        items: [...state.items, action.payload],
+        error: false,
+        loading: false,
+      }
+  
     default:
       return state;
   }

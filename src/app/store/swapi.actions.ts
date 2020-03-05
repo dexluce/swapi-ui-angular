@@ -3,12 +3,29 @@ import { Action } from '@ngrx/store';
 import { Item, SwapiType } from '../models';
 
 export enum ESwapiActions {
+  GetItemByUrlStart = "[Swapi] get item by id",
+  GetItemByUrlSuccess = "[Swapi] get item by url success",
+  GetItemByUrlError = "[Swapi] get item by url error",
   Search = "[Swapi] search",
   SearchStart = "[Swapi] search started",
   SearchError = "[Swapi] search error",
   SearchSuccess = "[Swapi] search succed",
   SearchChanged = "[Swapi] search changed",
   FiltersChanged = "[Swapi] filters changed",
+}
+
+export class GetItemByUrlStart implements Action {
+  public readonly type = ESwapiActions.GetItemByUrlStart;
+}
+
+export class GetItemByUrlSuccess implements Action {
+  public readonly type = ESwapiActions.GetItemByUrlSuccess;
+
+  constructor(public payload: Item) {}
+}
+
+export class GetItemByUrlError implements Action {
+  public readonly type = ESwapiActions.GetItemByUrlError;
 }
 
 export class Search implements Action {
@@ -41,4 +58,4 @@ export class FiltersChanged implements Action {
   constructor(public payload: SwapiType) {}
 }
 
-export type SwapiActions = Search | SearchStart | SearchError | SearchSuccess | SearchChanged | FiltersChanged;
+export type SwapiActions = Search | SearchStart | SearchError | SearchSuccess | SearchChanged | FiltersChanged | GetItemByUrlStart | GetItemByUrlSuccess | GetItemByUrlError;

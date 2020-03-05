@@ -6,7 +6,8 @@ export interface AppState {
 } 
 
 export interface SwapiState {
-  searchResult: Array<Item>
+  items: Array<Item>,
+  searchResult: Array<Item>,
   search: string,
   loading: boolean,
   error: boolean
@@ -14,6 +15,7 @@ export interface SwapiState {
 }
 
 export const initialSwapiState: SwapiState = {
+  items: [],
   searchResult: [],
   filters: {
     [SwapiType.films]: true,
