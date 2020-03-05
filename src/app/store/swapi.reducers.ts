@@ -24,23 +24,23 @@ export const swapiReducer = (
     case ESwapiActions.SearchStart:
       return {
         ...state,
-        searchError: false,
-        searching: true
+        error: false,
+        loading: true
       }
     
     case ESwapiActions.SearchError:
       return {
         ...state,
-        searchError: true,
-        searching: false
+        error: true,
+        loading: false
       }
 
     case ESwapiActions.SearchSuccess:
       return {
         ...state,
         searchResult: action.payload,
-        searchError: false,
-        searching: false
+        error: false,
+        loading: false
       }
 
     default:

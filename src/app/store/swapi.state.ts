@@ -8,8 +8,8 @@ export interface AppState {
 export interface SwapiState {
   searchResult: Array<Item>
   search: string,
-  searching: boolean,
-  searchError: boolean
+  loading: boolean,
+  error: boolean
   filters: Filters,
 }
 
@@ -23,6 +23,6 @@ export const initialSwapiState: SwapiState = {
     [SwapiType.starships]: true,
     [SwapiType.vehicles]: true },
   search: "",
-  searching: false,
-  searchError: false
+  loading: false,
+  error: false
 }
