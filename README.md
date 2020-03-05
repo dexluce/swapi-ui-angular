@@ -14,7 +14,7 @@ Auth service is not using the store as we don't have any user data to store. We 
 
 The call to Swapi are conditionnal for better network perf. SwapiService will get an item only if it's not in the store.
 
-## Missing feature
+## Missing features
 
 - [ ] Styling/CSS
 - [ ] Resolving items urls in item details 
