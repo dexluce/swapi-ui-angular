@@ -2,26 +2,22 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.4.
 
-## Development server
+The goal is to practise with Angular and Typescript
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Structure
 
-## Code scaffolding
+This app has a store (NGRX) for storing search result, search parameters, items from Swapi and http call status.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+We make use of services for authentication and Api call. Services are responsible of calling actions from the store.
 
-## Build
+Auth service is not using the store as we don't have any user data to store. We store authentification status in localStorage as a false token.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+The call to Swapi are conditionnal for better network perf. SwapiService will get an item only if it's not in the store.
 
-## Running unit tests
+## Missing feature
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- [ ] Styling/CSS
+- [ ] Resolving items urls in item details 
+- [ ] Paginate the search (we only get first page right now)
+- [ ] Add a loading component in top nav bar
+- [ ] Add a error component in top nav bar
