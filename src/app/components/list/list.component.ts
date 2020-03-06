@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
 import { AppState } from 'src/app/store/swapi.state';
 import { Item } from 'src/app/models';
-import { Observable } from 'rxjs';
-import { SearchService } from 'src/app/services';
 
 @Component({
   selector: 'app-list',
@@ -13,13 +13,9 @@ import { SearchService } from 'src/app/services';
 export class ListComponent implements OnInit {
   items: Observable<Array<Item>>;
 
-  constructor(
-    private store: Store<AppState>,
-    private searchService: SearchService,
-  ) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.searchService.search();
     this.items = this.store.select((store) => store.app.searchResult);
   }
 }

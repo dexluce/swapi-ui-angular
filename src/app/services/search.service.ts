@@ -14,7 +14,9 @@ export class SearchService {
   constructor(
     private swapiService: SwapiService,
     private swapiStore: Store<AppState>,
-  ) { }
+  ) {
+    this.search();
+  }
 
   // Local search, search a specific type on the api
   private async _search(_type: SwapiType, _search: string): Promise<Array<Item>> {
