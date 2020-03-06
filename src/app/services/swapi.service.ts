@@ -19,6 +19,8 @@ export class SwapiService {
     private store: Store<AppState>,
     private snackBarService: MatSnackBar
   ) {}
+  
+  currentFetchedUrl = "";
 
   private formatErrors(error: HttpErrorResponse) {
     if (error.type === 503) {
@@ -34,7 +36,16 @@ export class SwapiService {
 
   // Todo: get types for Http promise from Swapi
   private _get(rootPath: string, params: HttpParams = new HttpParams()): Promise<any> {
+    // If we are already calling this url, stop here
+    if (this.currentFetchedUrl === rootPath) return Promise.resolve();
+    // Store the current url to make sure we don't fetch it before it's resolve
+    this.currentFetchedUrl = rootPath;
+
     return this.http.get(`${rootPath}`, { params }).toPromise()
+    .then((data) => {
+      this.currentFetchedUrl = "";
+      return data;
+    })
     .catch((e) => this.formatErrors(e))
   }
 
