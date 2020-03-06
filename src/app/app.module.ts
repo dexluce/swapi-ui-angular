@@ -31,6 +31,7 @@ import { AuthentificationGuard } from './guards/authentification.guard';
 import { swapiReducer } from './store/swapi.reducers';
 import { environment } from 'src/environments/environment';
 import { SwapiItemToReadableNamePipe } from './pipes/swapi-item-to-readable-name.pipe';
+import { ResolveItemFromUrlPipe } from './pipes/resolve-item-from-url.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { SwapiItemToReadableNamePipe } from './pipes/swapi-item-to-readable-name
     SearchFormComponent,
     TopBarComponent,
     SwapiListLayoutComponent,
-    SwapiItemToReadableNamePipe
+    SwapiItemToReadableNamePipe,
+    ResolveItemFromUrlPipe,
   ],
   imports: [
     BrowserModule,
