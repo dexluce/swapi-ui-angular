@@ -14,7 +14,9 @@ export enum SwapiType {
   vehicles = "vehicles",
 }
 
-type Item = Film | Species | People | Planet | Starship | Vehicle;
+type Item = (Film | Species | People | Planet | Starship | Vehicle) & {
+  [key in SwapiType]?: Array<string>
+};
 
 type Filters = {
   [key in SwapiType]: boolean
