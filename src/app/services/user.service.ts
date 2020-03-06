@@ -6,7 +6,9 @@ import { Injectable } from '@angular/core';
 export class UserService {
   public isAuthenticated = false;
 
-  constructor() { }
+  constructor() {
+    this.populate();
+  }
 
   // This could be in a JWT service
   getToken(): String {

@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 
-import { UserService } from '../../services';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,12 +7,4 @@ import { UserService } from '../../services';
 })
 export class AppComponent {
   title = 'swapi-ui-angular';
-
-  constructor (
-    private userService: UserService
-  ) {}
-
-  ngOnInit() {
-    this.userService.populate();
-  }
 }
