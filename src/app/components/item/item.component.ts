@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
-import { Item } from 'src/app/models';
+import { Item, SwapiType } from 'src/app/models';
 import { SwapiService } from 'src/app/services';
 
 @Component({
@@ -11,6 +11,7 @@ import { SwapiService } from 'src/app/services';
 })
 export class ItemComponent implements OnInit, OnDestroy {
   item: Observable<Item>;
+  swapiType = SwapiType;
   private subscribtionToUrlParam: Subscription;
 
   constructor(
