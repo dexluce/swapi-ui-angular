@@ -27,13 +27,17 @@ export class SwapiService {
       this.snackBarService.open("An error occure while fetching data, please refresh the browser");
     }
   }
+  
+  private extractTypeFromUrl(url: string) {
+    return url.split("/")[4];
+  }
 
-   // Todo: get types for Http promise from Swapi
+  // Todo: get types for Http promise from Swapi
   private _get(rootPath: string, params: HttpParams = new HttpParams()): Promise<any> {
     return this.http.get(`${rootPath}`, { params }).toPromise()
     .catch((e) => this.formatErrors(e))
   }
- 
+
   get(path: string): Promise<any> {
     return this._get(`${environment.api_url}${path}`);
   }
@@ -47,8 +51,12 @@ export class SwapiService {
         if (!item) {
           this.store.dispatch(new GetItemByUrlStart());
           this._get(url).then((data: any) => {
-            this.store.dispatch(new GetItemByUrlSuccess(data));
-            return item;
+            const _item: Item = {
+              ...data,
+              type: this.extractTypeFromUrl(url),
+            }
+            this.store.dispatch(new GetItemByUrlSuccess(_item));
+            return _item;
           })
           .catch(e => {
             this.store.dispatch(new GetItemByUrlError());
