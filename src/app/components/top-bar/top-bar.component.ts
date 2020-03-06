@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/swapi.state';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-top-bar',
@@ -6,10 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent implements OnInit {
+  isLoading: Observable<boolean>;
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.isLoading = this.store.select(store => store.app.loading);
   }
-
 }

@@ -8,6 +8,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
@@ -55,6 +56,7 @@ import { SwapiItemToReadableNamePipe } from './pipes/swapi-item-to-readable-name
       logOnly: environment.production,
     }),
     MatSlideToggleModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     AuthentificationGuard,
