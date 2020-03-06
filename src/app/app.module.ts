@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
@@ -57,6 +58,7 @@ import { SwapiItemToReadableNamePipe } from './pipes/swapi-item-to-readable-name
     }),
     MatSlideToggleModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
   ],
   providers: [
     AuthentificationGuard,
