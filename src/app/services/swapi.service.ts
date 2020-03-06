@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
@@ -20,14 +20,18 @@ export class SwapiService {
     private snackBarService: MatSnackBar
   ) {}
 
-  private formatErrors() {
-    this.snackBarService.open("An error occure while fetching data, please refresh the browser");
+  private formatErrors(error: HttpErrorResponse) {
+    if (error.type === 503) {
+      this.snackBarService.open("It looks like the SWAPI server is down. Please try again in a moment.");
+    } else {
+      this.snackBarService.open("An error occure while fetching data, please refresh the browser");
+    }
   }
 
   // Todo: get types for Http promise from Swapi
   get(path: string, params: HttpParams = new HttpParams()): Promise<any> {
     return this.http.get(`${environment.api_url}${path}`, { params }).toPromise()
-    .catch(() => this.formatErrors())
+    .catch((e) => this.formatErrors(e))
   }
 
   getItemByUrl(url: string): Observable<Item> {
@@ -45,7 +49,7 @@ export class SwapiService {
           })
           .catch(e => {
             this.store.dispatch(new GetItemByUrlError());
-            this.formatErrors();
+            this.formatErrors(e);
           })
         } else {
           return item;

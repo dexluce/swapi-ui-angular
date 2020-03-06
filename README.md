@@ -20,6 +20,6 @@ The call to Swapi are conditionnal for better network perf. SwapiService will ge
 - [ ] Resolving items urls in item details 
 - [ ] Paginate the search (we only get first page right now)
 - [x] Add a loading component in top nav bar
-- [ ] Add a error component in top nav bar
+- [x] handle network error and display error to user
 - [ ] Implement e2e tests
 - [ ] Implement unit tests
