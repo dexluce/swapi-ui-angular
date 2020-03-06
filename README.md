@@ -24,3 +24,7 @@ The call to Swapi are conditionnal for better network perf. SwapiService will ge
 - [x] handle network error and display error to user
 - [ ] Implement e2e tests
 - [ ] Implement unit tests
+
+## Refactore needed
+
+The typing for items from the swapi is working but is wrong.
