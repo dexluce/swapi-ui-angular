@@ -10,7 +10,6 @@ import { SwapiService } from 'src/app/services';
   styleUrls: ['./item.component.css']
 })
 export class ItemComponent implements OnInit, OnDestroy {
-  url: string;
   item: Observable<Item>;
   private subscribtionToUrlParam: Subscription;
 
@@ -21,8 +20,8 @@ export class ItemComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscribtionToUrlParam = this.route.params.subscribe((params) => {
-      this.url = params['itemUrl'];
-      this.item = this.swapiService.getItemByUrl(this.url);
+      const url = params['itemUrl'];
+      this.item = this.swapiService.getItemByUrl(url);
     });
   }
 
