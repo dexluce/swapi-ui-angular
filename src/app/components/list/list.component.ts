@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/swapi.state';
 import { Item } from 'src/app/models';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
 import { SearchService } from 'src/app/services';
 
 @Component({
@@ -13,14 +12,9 @@ import { SearchService } from 'src/app/services';
 })
 export class ListComponent implements OnInit {
   items: Observable<Array<Item>>;
-  
-  itemClicked(item: Item) {
-    this.router.navigate(['/', item.url]);
-  }
 
   constructor(
     private store: Store<AppState>,
-    private router: Router,
     private searchService: SearchService,
   ) { }
 
