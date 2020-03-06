@@ -10,7 +10,6 @@ import { UserService } from 'src/app/services';
 })
 export class LoginFormComponent {
   authForm: FormGroup;
-  isSubmitting = false;
 
   constructor(
     private router: Router,
@@ -25,8 +24,6 @@ export class LoginFormComponent {
   }
 
   submitForm() {
-    this.isSubmitting = true;
-
     const credentials = this.authForm.value;
     this.userService.login(credentials).then(() => this.router.navigateByUrl('/'));
   }
