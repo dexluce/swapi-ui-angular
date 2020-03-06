@@ -17,7 +17,7 @@ The call to Swapi are conditionnal for better network perf. SwapiService will ge
 ## Missing features
 
 - [ ] Styling/CSS
-- [ ] Resolving items urls in item details 
+- [x] Resolving items urls in item details 
 - [ ] Paginate the search (we only get first page right now)
 - [x] Add a loading component in top nav bar
 - [x] handle network error and display error to user
