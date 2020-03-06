@@ -52,7 +52,6 @@ export class SwapiService {
           })
           .catch(e => {
             this.store.dispatch(new GetItemByUrlError());
-            this.formatErrors(e);
           })
         } else {
           return item;
