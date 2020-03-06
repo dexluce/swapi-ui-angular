@@ -1,13 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Item, SwapiType } from '../models';
-import { swapiReducer } from '../store/swapi.reducers';
 
 @Pipe({
   name: 'swapiItemToReadableName'
 })
 export class SwapiItemToReadableNamePipe implements PipeTransform {
 
-  transform(swapiItem: Item) {
+  transform(swapiItem: Item | undefined) {
+    if (!swapiItem) return 'loading...'
+
     switch (swapiItem.type) {
       case SwapiType.films:
         return swapiItem.title;
