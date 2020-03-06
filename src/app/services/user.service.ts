@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class UserService {
   public isAuthenticated = false;
 
-  constructor() {
+  constructor(private snackBarService: MatSnackBar) {
     this.populate();
   }
 
@@ -28,10 +29,14 @@ export class UserService {
     }
   }
 
-  async login(credentials): Promise<boolean> {
-    // we should do a api call to auth. But for now we just login by default
-    this.saveToken("Random false token just for this login without api")
-    this.isAuthenticated = true;
-    return true;
+  async login(credentials: {password: string, username: string}): Promise<boolean> {
+    if (credentials.password === 'admin' && credentials.username === 'admin') {
+      // we should do a api call to auth. But for now we just login by default
+      this.saveToken("Random false token just for this login without api")
+      this.isAuthenticated = true;
+      return true;
+    } else {
+      this.snackBarService.open("Wrong credentials. Try admin:admin")
+    }
   }
 }
