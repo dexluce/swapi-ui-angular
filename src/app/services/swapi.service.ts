@@ -28,10 +28,14 @@ export class SwapiService {
     }
   }
 
-  // Todo: get types for Http promise from Swapi
-  get(path: string, params: HttpParams = new HttpParams()): Promise<any> {
-    return this.http.get(`${environment.api_url}${path}`, { params }).toPromise()
+   // Todo: get types for Http promise from Swapi
+  private _get(rootPath: string, params: HttpParams = new HttpParams()): Promise<any> {
+    return this.http.get(`${rootPath}`, { params }).toPromise()
     .catch((e) => this.formatErrors(e))
+  }
+ 
+  get(path: string): Promise<any> {
+    return this._get(`${environment.api_url}${path}`);
   }
 
   getItemByUrl(url: string): Observable<Item> {
@@ -42,8 +46,7 @@ export class SwapiService {
         // if we don't have the item in the store, we call it from api
         if (!item) {
           this.store.dispatch(new GetItemByUrlStart());
-          this.http.get(url).toPromise()
-          .then((data: any) => {
+          this._get(url).then((data: any) => {
             this.store.dispatch(new GetItemByUrlSuccess(data));
             return item;
           })
