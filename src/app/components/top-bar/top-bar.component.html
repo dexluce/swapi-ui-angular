@@ -1,2 +1,9 @@
-<p>Swapi API search | an angular implementation</p>
-<mat-progress-spinner *ngIf="isLoading | async" mode="indeterminate"></mat-progress-spinner>
+<div class="container">
+  <p class="title">Swapi API search | an angular implementation</p>
+  <mat-progress-spinner
+    *ngIf="isLoading | async"
+    mode="indeterminate"
+    diameter="30"
+    class="spinner">
+  </mat-progress-spinner>
+</div>
