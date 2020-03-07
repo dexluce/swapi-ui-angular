@@ -1,0 +1,7 @@
+ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: nowrap;
+  /* You can also add some margins here to make it look prettier */
+}

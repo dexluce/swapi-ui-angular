@@ -1,5 +1,5 @@
 <input (keydown.enter)="searchChanged($event.target.value)">
-<ul>
+<ul class="filters">
   <li *ngFor="let type of (_swapiType | keyvalue); let i = index">
     <mat-slide-toggle
       [checked]="(filters | async)[type.key]"
