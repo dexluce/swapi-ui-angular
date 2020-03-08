@@ -41,6 +41,7 @@ import { PlanetComponent } from './components/items/planet/planet.component';
 import { SpeciesComponent } from './components/items/species/species.component';
 import { StarshipComponent } from './components/items/starship/starship.component';
 import { VehicleComponent } from './components/items/vehicle/vehicle.component';
+import { UrlsListToReadableClickableItemsComponent } from './components/items/urls-list-to-readable-clickable-items/urls-list-to-readable-clickable-items.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { VehicleComponent } from './components/items/vehicle/vehicle.component';
     SpeciesComponent,
     StarshipComponent,
     VehicleComponent,
+    UrlsListToReadableClickableItemsComponent,
   ],
   imports: [
     BrowserModule,
