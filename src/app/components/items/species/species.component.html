@@ -1,1 +1,26 @@
-<p>species works!</p>
+<h1>
+  {{species | swapiItemToReadableName}}
+</h1>
+<p>
+  <b>{{species | swapiItemToReadableName}}</b> is a star wars species.<br/>
+  {{species | swapiItemToReadableName}} are <b>{{species.designation}}</b> beings classified as
+  <b>{{species.classification}}</b>.<br/>
+  They have an average height of <b>{{species.average_height}}cm</b>.<br/>
+  Skin colors can be : <b>{{species.skin_colors}}</b>.<br/>
+  Hair are : <b>{{species.hair_colors}}</b>.<br/>
+  Eyes are <b>{{species.eye_colors}}</b>.<br/>
+  They can live <b>{{species.average_lifespan}} years</b> and their homeworld is 
+  <a *ngIf="species.homeworld" [routerLink]="['', (species.homeworld | resolveItemFromUrl | async | getTypeFromItem), (species.homeworld | resolveItemFromUrl | async | getIdFromItem)]">
+    {{species.homeworld | resolveItemFromUrl | async | swapiItemToReadableName}}
+  </a>
+  .<br/>
+  They speak <b>{{species.language}}</b>
+</p>
+<p>
+  There is a few <b>characters</b> belonging to {{species | swapiItemToReadableName}} :<br/>
+  <app-urls-list-to-readable-clickable-items [listOfUrls]="species.people"></app-urls-list-to-readable-clickable-items>
+</p>
+<p>
+  We can see people of these species in a few <b>films</b> :<br/>
+  <app-urls-list-to-readable-clickable-items [listOfUrls]="species.films"></app-urls-list-to-readable-clickable-items>
+</p>
