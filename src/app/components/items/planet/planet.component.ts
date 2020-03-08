@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Planet } from 'src/app/models';
 
 @Component({
   selector: 'app-planet',
   templateUrl: './planet.component.html',
   styleUrls: ['./planet.component.css']
 })
-export class PlanetComponent implements OnInit {
+export class PlanetComponent {
+  @Input() planet: Planet;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

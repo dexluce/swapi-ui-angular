@@ -1,1 +1,23 @@
-<p>planet works!</p>
+<h1>
+  {{planet | swapiItemToReadableName}}
+</h1>
+<p>
+  <b>{{planet | swapiItemToReadableName}}</b> is a star wars planet.<br/>
+  Rotation period : {{planet.rotation_period}}<br/>
+  Orbital period : {{planet.orbital_period}}<br/>
+  Diameter : {{planet.diameter}}<br/>
+  gravity force : {{planet.gravity}}<br/>
+  Landscape : {{planet.terrain}}<br/>
+  rate land/water : {{planet.surface_water}}%<br/>
+  climat : {{planet.climate}}<br/>
+  population : {{planet.population}}<br/>
+
+</p>
+<p>
+  You can see {{planet | swapiItemToReadableName}} in a few <b>star wars movies</b> :<br/>
+  <app-urls-list-to-readable-clickable-items [listOfUrls]="planet.films"></app-urls-list-to-readable-clickable-items>
+</p>
+<p>
+  A few star wars <b>characters</b> walked on this planet :<br/>
+  <app-urls-list-to-readable-clickable-items [listOfUrls]="planet.residents"></app-urls-list-to-readable-clickable-items>
+</p>
