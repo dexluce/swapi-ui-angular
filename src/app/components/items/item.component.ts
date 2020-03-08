@@ -52,19 +52,12 @@ export class ItemComponent implements AfterViewInit, OnDestroy {
           this.ngAfterViewInit();
         }
       });
-
-      this.item.subscribe(() => {
-        if (this.container === undefined || this.starWarsScroll === undefined) return;
-        console.log(this.container.nativeElement.offsetHeight, this.starWarsScroll.nativeElement.offsetHeight)
-
-        this.topLimite = -(150 / this.starWarsScroll.nativeElement.offsetHeight * this.starWarsScroll.nativeElement.offsetHeight) 
-
-      })
     });
   }
 
   ngAfterViewInit() {
     if (this.container === undefined || this.starWarsScroll === undefined) return;
+    this.topLimite = -(140 / this.starWarsScroll.nativeElement.offsetHeight * this.starWarsScroll.nativeElement.offsetHeight);
     this.top = 0;
     this.isPlaying = true;
     
@@ -75,7 +68,6 @@ export class ItemComponent implements AfterViewInit, OnDestroy {
       this.isPlaying = false;
       player.destroy();
     })
-    console.log("ici")
   }
 
   ngOnDestroy() {
