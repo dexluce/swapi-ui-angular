@@ -1,6 +1,6 @@
 <ul>
   <li *ngFor="let url of listOfUrls">
-    <a>
+    <a [routerLink]="['', (url | resolveItemFromUrl | async | getTypeFromItem), (url | resolveItemFromUrl | async | getIdFromItem)]">
       {{url | resolveItemFromUrl | async | swapiItemToReadableName}}
     </a>
   </li>
