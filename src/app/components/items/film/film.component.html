@@ -9,8 +9,24 @@
   It's been directed by <b>{{film.director}}</b> and produced by <br/>
   <b>{{film.producer}}</b>
   It was released in theatre in <b>{{film.release_date}}</b><br/>
-  Watching this film, you'll meet following characters :<br/>
 </p>
-<app-urls-list-to-readable-clickable-items [listOfUrls]="film.characters">
-
-</app-urls-list-to-readable-clickable-items>
+<p>
+  Watching this film, you'll meet following <b>characters</b> :<br/>
+  <app-urls-list-to-readable-clickable-items [listOfUrls]="film.characters"></app-urls-list-to-readable-clickable-items>
+</p>
+<p>
+  You'll discover following <b>planets</b> :<br/>
+  <app-urls-list-to-readable-clickable-items [listOfUrls]="film.planets"></app-urls-list-to-readable-clickable-items>
+</p>
+<p>
+  You'll see in action following <b>starships</b> :<br/>
+  <app-urls-list-to-readable-clickable-items [listOfUrls]="film.starships"></app-urls-list-to-readable-clickable-items>
+</p>
+<p>
+  You'll ride with following <b>vehicles</b> :<br/>
+  <app-urls-list-to-readable-clickable-items [listOfUrls]="film.vehicles"></app-urls-list-to-readable-clickable-items>
+</p>
+<p>
+  And you'll encounter those <b>spieces</b> :<br/>
+  <app-urls-list-to-readable-clickable-items [listOfUrls]="film.species"></app-urls-list-to-readable-clickable-items>
+</p>
