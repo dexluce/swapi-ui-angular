@@ -9,6 +9,7 @@ import { AppState } from '../store/swapi.state';
 import { GetItemByUrlStart, GetItemByUrlSuccess, GetItemByUrlError } from '../store/swapi.actions';
 import { Item } from '../models';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { GetTypeFromItemPipe } from '../pipes/get-type-from-item.pipe';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,8 @@ export class SwapiService {
   constructor(
     private http: HttpClient,
     private store: Store<AppState>,
-    private snackBarService: MatSnackBar
+    private snackBarService: MatSnackBar,
+    private getTypeFromItemPipe: GetTypeFromItemPipe,
   ) {}
   
   currentFetchedUrl = "";
@@ -28,10 +30,6 @@ export class SwapiService {
     } else {
       this.snackBarService.open("An error occure while fetching data, please refresh the browser");
     }
-  }
-  
-  private extractTypeFromUrl(url: string) {
-    return url.split("/")[4];
   }
 
   // Todo: get types for Http promise from Swapi
@@ -64,7 +62,7 @@ export class SwapiService {
           this._get(url).then((data: any) => {
             const _item: Item = {
               ...data,
-              type: this.extractTypeFromUrl(url),
+              type: this.getTypeFromItemPipe.transform(data)
             }
             this.store.dispatch(new GetItemByUrlSuccess(_item));
             return _item;
@@ -77,5 +75,9 @@ export class SwapiService {
         }
       })
     );
+  }
+
+  buildUrlFromTypeAndId(type: string, id: string): string {
+    return `${environment.api_url}/${type}/${id}/`
   }
 }

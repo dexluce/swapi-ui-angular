@@ -1,19 +1,17 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
-import { Item, SwapiType } from 'src/app/models';
+import { Item, Film } from 'src/app/models';
 import { SwapiService } from 'src/app/services';
 
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
-  styleUrls: ['./item.component.css']
 })
 export class ItemComponent implements OnInit, OnDestroy {
   item: Observable<Item>;
   // this because the array returned for "people" in a item is named "characters"
   // We should do another type for this but... overkill.
-  swapiType = {...SwapiType, characters: "characters"};
   private subscribtionToUrlParam: Subscription;
 
   constructor(
@@ -23,8 +21,8 @@ export class ItemComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscribtionToUrlParam = this.route.params.subscribe((params) => {
-      const url = params['itemUrl'];
-      this.item = this.swapiService.getItemByUrl(url);
+      const itemUrl = this.swapiService.buildUrlFromTypeAndId(params["type"], params["id"]);
+      this.item = this.swapiService.getItemByUrl(itemUrl);
     });
   }
 
@@ -32,4 +30,7 @@ export class ItemComponent implements OnInit, OnDestroy {
     this.subscribtionToUrlParam.unsubscribe();
   }
 
+  asFilm(item: Item): Film {
+    return (item as Film);
+  }
 }

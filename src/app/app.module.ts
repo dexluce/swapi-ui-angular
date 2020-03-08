@@ -17,7 +17,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { ListComponent } from './components/list/list.component';
-import { ItemComponent } from './components/item/item.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { SwapiListLayoutComponent } from './components/swapi-list-layout/swapi-list-layout.component';
 
@@ -32,6 +31,16 @@ import { swapiReducer } from './store/swapi.reducers';
 import { environment } from 'src/environments/environment';
 import { SwapiItemToReadableNamePipe } from './pipes/swapi-item-to-readable-name.pipe';
 import { ResolveItemFromUrlPipe } from './pipes/resolve-item-from-url.pipe';
+import { StarWarsScrollEffectDirective } from './directives/star-wars-scroll-effect.directive';
+import { GetIdFromItemPipe } from './pipes/get-id-from-item.pipe';
+import { GetTypeFromItemPipe } from './pipes/get-type-from-item.pipe';
+import { ItemComponent } from './components/items/item.component';
+import { FilmComponent } from './components/items/film/film.component';
+import { PeopleComponent } from './components/items/people/people.component';
+import { PlanetComponent } from './components/items/planet/planet.component';
+import { SpeciesComponent } from './components/items/species/species.component';
+import { StarshipComponent } from './components/items/starship/starship.component';
+import { VehicleComponent } from './components/items/vehicle/vehicle.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +53,15 @@ import { ResolveItemFromUrlPipe } from './pipes/resolve-item-from-url.pipe';
     SwapiListLayoutComponent,
     SwapiItemToReadableNamePipe,
     ResolveItemFromUrlPipe,
+    StarWarsScrollEffectDirective,
+    GetIdFromItemPipe,
+    GetTypeFromItemPipe,
+    FilmComponent,
+    PeopleComponent,
+    PlanetComponent,
+    SpeciesComponent,
+    StarshipComponent,
+    VehicleComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +85,7 @@ import { ResolveItemFromUrlPipe } from './pipes/resolve-item-from-url.pipe';
     SearchService,
     SwapiService,
     UserService,
+    GetTypeFromItemPipe,
   ],
   bootstrap: [AppComponent]
 })

@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { SwapiListLayoutComponent } from './components/swapi-list-layout/swapi-list-layout.component';
 import { AuthentificationGuard } from './guards/authentification.guard';
-import { ItemComponent } from './components/item/item.component';
+import { ItemComponent } from './components/items/item.component';
 
 const routes: Routes = [
   {
@@ -17,9 +17,9 @@ const routes: Routes = [
     canActivate: [AuthentificationGuard]
   },
   {
-    path: ':itemUrl',
+    path: ':type/:id',
     component: ItemComponent,
-    canActivate: [AuthentificationGuard]
+    canActivate: [AuthentificationGuard],
   },
 ];
 

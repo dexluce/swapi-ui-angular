@@ -1,0 +1,3 @@
+<div *ngIf="(item | async)" [ngSwitch]="(item | async).type">
+  <app-film *ngSwitchCase="'films'" [film]="asFilm((item | async))"></app-film>
+</div>
