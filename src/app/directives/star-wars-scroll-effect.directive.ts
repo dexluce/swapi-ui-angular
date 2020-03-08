@@ -35,6 +35,8 @@ export class StarWarsScrollEffectDirective implements AfterViewInit {
   ){ }
   
   ngAfterViewInit() {
+    this.snackBarService.open("wait ...", null, { duration: 1000 })
+
     const parent = this.el.nativeElement.parentNode;
     const div = this.renderer.createElement("div");
     
@@ -58,7 +60,7 @@ export class StarWarsScrollEffectDirective implements AfterViewInit {
     this.player.onDone(() => {
       this.isPlaying = false;
       this.player.destroy();
-      this.snackBarService.open("Now that the animation is finish, you can scroll this view. Enjoy :)", null, { duration: 5000 })
+      this.snackBarService.open("You can scroll this view now. Enjoy :)", null, { duration: 5000 })
     })
   }
 }
