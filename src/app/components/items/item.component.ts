@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
-import { Item, Film } from 'src/app/models';
+import { Item, Film, People, Vehicle, Planet, Species, Starship } from 'src/app/models';
 import { SwapiService } from 'src/app/services';
 
 @Component({
@@ -28,7 +28,16 @@ export class ItemComponent implements OnInit, OnDestroy {
     this.subscribtionToUrlParam.unsubscribe();
   }
 
-  asFilm(item: Item): Film {
-    return (item as Film);
+  asSwapiType(item: Item): Item {
+    switch (item.type) {
+      case "films": return (item as Film);
+      case "people": return (item as People);
+      case "planets": return (item as Planet);
+      case "species": return (item as Species);
+      case "starships": return (item as Starship);
+      case "vehicles": return (item as Vehicle);
+      default:
+        break;
+    }
   }
 }
