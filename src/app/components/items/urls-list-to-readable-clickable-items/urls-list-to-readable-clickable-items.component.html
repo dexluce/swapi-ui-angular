@@ -1,5 +1,5 @@
 <ul>
-  <small>go ahead, click them</small>
+  <small>(go ahead, click them)</small>
   <li *ngFor="let url of listOfUrls">
     <a [routerLink]="['', (url | resolveItemFromUrl | async | getTypeFromItem), (url | resolveItemFromUrl | async | getIdFromItem)]">
       {{url | resolveItemFromUrl | async | swapiItemToReadableName}}
