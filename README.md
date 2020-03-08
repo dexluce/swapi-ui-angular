@@ -16,10 +16,11 @@ The call to Swapi are conditionnal for better network perf. SwapiService will ge
 
 ## Missing features
 
-- [ ] Styling/CSS
+- [-] Styling/CSS
 - [x] Resolving items urls in item details
 - [ ] add an autocomplete to the search input
 - [ ] Paginate the search (we only get first page right now)
+- [ ] add a breadcrumbs while navigating beetwin items.
 - [x] Add a loading component in top nav bar
 - [x] handle network error and display error to user
 - [ ] Implement e2e tests
