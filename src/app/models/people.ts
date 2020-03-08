@@ -7,16 +7,16 @@ export default interface People {
   created: string;
   url: string;
   mass: string;
-  films: Film[];
-  homeworld: string;
   birth_year: string;
   gender: string;
   height: string;
   eye_color: string;
   skin_color: string;
-  species: Species[];
   hair_color: string;
-  starships: Starship[];
   name: string;
-  vehicles: Vehicle[];
+  homeworld: string;
+  films: Array<string>;
+  species: Array<string>;
+  vehicles: Array<string>;
+  starships: Array<string>;
 }

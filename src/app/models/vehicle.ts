@@ -6,7 +6,6 @@ export default interface Vehicle {
   edited: string;
   created: string;
   url: string;
-  films: Film[],
   crew: string,
   vehicle_class: string,
   passengers: string,
@@ -18,5 +17,6 @@ export default interface Vehicle {
   consumables: string,
   cargo_capacity: string,
   name: string,
-  pilots: string,
+  pilots: Array<string>,
+  films: Array<string>,
 }

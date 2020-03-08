@@ -10,11 +10,11 @@ export default interface Film {
   opening_crawl: string;
   title: string;
   release_date: string;
-  planets: Planet;
-  characters: string;
-  starships: Starship;
-  vehicles: Vehicle;
-  species: Species;
   producer: string;
   episode_id: string;
+  characters: Array<string>;
+  planets: Array<string>;
+  starships: Array<string>;
+  vehicles: Array<string>;
+  species: Array<string>;
 }

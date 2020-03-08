@@ -6,7 +6,6 @@ export default interface Starship {
   edited: string;
   created: string;
   url: string;
-  films: Film[],
   starship_class: string,
   crew: string,
   MGLT: string,
@@ -20,5 +19,6 @@ export default interface Starship {
   consumables: string,
   cargo_capacity: string,
   name: string,
-  pilots: string
+  pilots: Array<string>;
+  films: Array<string>;
 }
