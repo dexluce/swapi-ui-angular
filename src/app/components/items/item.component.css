@@ -1,0 +1,12 @@
+.container {
+  height: 100%;
+  margin-top: -250px;
+  transform: perspective(100px) rotateX(25deg);
+  overflow: hidden;
+}
+
+.star-wars-scroll {
+  position: absolute;
+  left: 35%;
+  right: 35%;
+}
