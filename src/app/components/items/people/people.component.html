@@ -3,8 +3,8 @@
 </h1>
 <p>
   <b>{{people | swapiItemToReadableName}}</b> is a star wars character.<br/>
-  {{people | swapiItemToReadableName}} is about <b>{{people.height}}cm</b> tall and weights about <b>{{people.mass}}</b>kg.<br/>
-  {{people | swapiItemToReadableName}}'s sex is <b>{{people.gender}}</b>, eyes are <b>{{people.eye_color}}</b>
+  {{people | swapiItemToReadableName}} is about <b>{{people.height}}cm</b> and weights about <b>{{people.mass}}kg</b>.<br/>
+  {{people | swapiItemToReadableName}}'s sex is <b>{{people.gender}}</b>, eyes are <b>{{people.eye_color}}</b>,
   skin is <b>{{people.skin_color}}</b>, hair color is <b>{{people.hair_color}}</b>,<br/>
   {{people | swapiItemToReadableName}} is born the <b>{{people.birth_year}}</b>
   <a *ngIf="people.homeworld" [routerLink]="['', (people.homeworld | resolveItemFromUrl | async | getTypeFromItem), (people.homeworld | resolveItemFromUrl | async | getIdFromItem)]">
