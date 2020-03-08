@@ -25,11 +25,7 @@ export class SwapiService {
   currentFetchedUrl = "";
 
   private formatErrors(error: HttpErrorResponse) {
-    if (error.type === 503) {
-      this.snackBarService.open("It looks like the SWAPI server is down. Please try again in a moment.");
-    } else {
-      this.snackBarService.open("An error occure while fetching data, please refresh the browser");
-    }
+    this.snackBarService.open("It looks like the SWAPI server is down. Please try again in a moment.");
   }
 
   // Todo: get types for Http promise from Swapi
