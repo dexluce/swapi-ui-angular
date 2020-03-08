@@ -10,8 +10,6 @@ import { SwapiService } from 'src/app/services';
 })
 export class ItemComponent implements OnInit, OnDestroy {
   item: Observable<Item>;
-  // this because the array returned for "people" in a item is named "characters"
-  // We should do another type for this but... overkill.
   private subscribtionToUrlParam: Subscription;
 
   constructor(
