@@ -17,12 +17,17 @@ export class ItemComponent implements AfterViewInit, OnDestroy {
   private subscribtionToUrlParam: Subscription;
   private routerSubscription: Subscription;
   private top = 0; // The current offset of the start wars text
-  private topLimite = 0; // The max offset, adapted to the size of the text displayed
-  private isPlaying = true; // While we are player the animation we can't allow the user to scroll. This because angular doesn't implement player.setPosition / player.getPosition yet
+  private isPlaying = false; // While we are player the animation we can't allow the user to scroll. This because angular doesn't implement player.setPosition / player.getPosition yet
   private animation: AnimationMetadata[] = [
     style({ top: '95%' }),
-    animate('5s linear', style({ top: 0 }))
+    animate('1s linear', style({ top: 0 }))
   ];
+
+  // The max offset, adapted to the size of the text displayed
+  get topLimite() {
+    if (this.container === undefined || this.starWarsScroll === undefined) return -100;
+    else return (100 / this.container.nativeElement.offsetHeight * (this.starWarsScroll.nativeElement.offsetHeight * -Math.sin(0.436332)));
+  }
 
   @HostListener("window:wheel", ["$event"]) onScroll(e: WheelEvent) {
     if (this.isPlaying) return;
@@ -56,17 +61,16 @@ export class ItemComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    if (this.container === undefined || this.starWarsScroll === undefined) return;
-    this.topLimite = -(140 / this.starWarsScroll.nativeElement.offsetHeight * this.starWarsScroll.nativeElement.offsetHeight);
+    if (this.starWarsScroll === undefined) return;
     this.top = 0;
-    this.isPlaying = true;
-    
     const factory = this.builder.build(this.animation);
     const player = factory.create(this.starWarsScroll.nativeElement);
+    this.isPlaying = true;
     player.play();
     player.onDone(() => {
       this.isPlaying = false;
       player.destroy();
+      this.renderer.setStyle(this.starWarsScroll.nativeElement, "top", "0%")
     })
   }
 
