@@ -30,14 +30,8 @@ export class SwapiService {
 
   // Todo: get types for Http promise from Swapi
   private _get(rootPath: string, params: HttpParams = new HttpParams()): Promise<any> {
-    // If we are already calling this url, stop here
-    if (this.currentFetchedUrl === rootPath) return Promise.resolve();
-    // Store the current url to make sure we don't fetch it before it's resolve
-    this.currentFetchedUrl = rootPath;
-
     return this.http.get(`${rootPath}`, { params }).toPromise()
     .then((data) => {
-      this.currentFetchedUrl = "";
       return data;
     })
     .catch((e) => this.formatErrors(e))
@@ -48,27 +42,34 @@ export class SwapiService {
   }
 
   getItemByUrl(url: string): Observable<Item> {
-    // first we get the item from store
+    // first we search the item in the store
     return this.store.select(state => state.app.items.find(item => item.url === url))
     .pipe(
       tap(item => {
-        // if we don't have the item in the store, we call it from api
-        if (!item) {
-          this.store.dispatch(new GetItemByUrlStart());
-          this._get(url).then((data: any) => {
-            const _item: Item = {
-              ...data,
-              type: this.getTypeFromItemPipe.transform(data)
-            }
-            this.store.dispatch(new GetItemByUrlSuccess(_item));
-            return _item;
-          })
-          .catch(e => {
-            this.store.dispatch(new GetItemByUrlError());
-          })
-        } else {
-          return item;
-        }
+        // if we already have the item in store, we can return it
+        if (item !== undefined) return item;
+        // else we fetch the item
+        // If we are already fetching this url, stop here
+        if (this.currentFetchedUrl === url) return;
+        // Store the current url to make sure we don't fetch it before it's resolve
+        this.currentFetchedUrl = url;
+
+        this.store.dispatch(new GetItemByUrlStart());
+
+        this._get(url).then((data: any) => {
+          if (data === undefined) return;
+          const _item: Item = {
+            ...data,
+            type: this.getTypeFromItemPipe.transform(data)
+          }
+
+          this.store.dispatch(new GetItemByUrlSuccess(_item));
+          this.currentFetchedUrl = "";
+          return _item;
+        })
+        .catch(e => {
+          this.store.dispatch(new GetItemByUrlError());
+        })
       })
     );
   }

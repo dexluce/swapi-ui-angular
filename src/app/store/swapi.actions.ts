@@ -3,7 +3,7 @@ import { Action } from '@ngrx/store';
 import { Item, SwapiType } from '../models';
 
 export enum ESwapiActions {
-  GetItemByUrlStart = "[Swapi] get item by id",
+  GetItemByUrlStart = "[Swapi] get item by url",
   GetItemByUrlSuccess = "[Swapi] get item by url success",
   GetItemByUrlError = "[Swapi] get item by url error",
   Search = "[Swapi] search",
