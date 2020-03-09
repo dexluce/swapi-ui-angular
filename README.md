@@ -28,4 +28,4 @@ The call to Swapi are conditionnal for better network perf. SwapiService will ge
 
 ## Refactore needed
 
-The typing for items from the swapi is working but is wrong.
+When we reload on a page item, the star wars scroll effect doesn't goes well. This because we should recalculate topLimite's scroll after item has been loaded in DOM. 
