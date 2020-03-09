@@ -16,7 +16,7 @@ The call to Swapi are conditionnal for better network perf. SwapiService will ge
 
 ## Missing features
 
-- [-] Styling/CSS
+- [/] Styling/CSS
 - [x] Resolving items urls in item details
 - [ ] add an autocomplete to the search input
 - [ ] Paginate the search (we only get first page right now)
@@ -25,7 +25,3 @@ The call to Swapi are conditionnal for better network perf. SwapiService will ge
 - [x] handle network error and display error to user
 - [ ] Implement e2e tests
 - [ ] Implement unit tests
-
-## Refactore needed
-
-When we reload on a page item, the star wars scroll effect doesn't goes well. This because we should recalculate topLimite's scroll after item has been loaded in DOM. 
