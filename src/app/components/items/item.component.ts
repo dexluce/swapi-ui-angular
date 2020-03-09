@@ -19,25 +19,25 @@ export class ItemComponent implements AfterViewInit, OnDestroy {
   private top = 0; // The current offset of the start wars text
   private isPlaying = false; // While we are player the animation we can't allow the user to scroll. This because angular doesn't implement player.setPosition / player.getPosition yet
   private animation: AnimationMetadata[] = [
-    style({ top: '95%' }),
+    style({ top: '71%' }),
     animate('1s linear', style({ top: 0 }))
   ];
 
   // The max offset, adapted to the size of the text displayed
   get topLimite() {
     if (this.container === undefined || this.starWarsScroll === undefined) return -100;
-    else return (100 / this.container.nativeElement.offsetHeight * (this.starWarsScroll.nativeElement.offsetHeight * -Math.sin(0.436332)));
+    else return -(this.starWarsScroll.nativeElement.offsetHeight * 89) / (this.container.nativeElement.offsetHeight * 0.90630791931);
   }
 
   @HostListener("window:wheel", ["$event"]) onScroll(e: WheelEvent) {
-    if (this.isPlaying) return;
-
+    if (this.isPlaying || this.starWarsScroll === undefined) return;
+    console.log(this.topLimite)
     if (e.deltaY > 0) {
       if (this.top !> this.topLimite) this.top = this.top - 1;
     } else {
-      if (this.top !< 100) this.top = this.top + 1;
+      if (this.top !< 71) this.top = this.top + 1;
     }
-
+    console.log(this.top)
     this.renderer.setStyle(this.starWarsScroll.nativeElement, "top", `${this.top}%`)
   }
 

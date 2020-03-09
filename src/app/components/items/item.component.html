@@ -1,11 +1,11 @@
 <div class="container"#container>
   <div class="star-wars-scroll"#starWarsScroll *ngIf="(item | async)" [ngSwitch]="(item | async).type">
-      <app-film *ngSwitchCase="'films'" [film]="asSwapiType(item | async)"></app-film>
-      <app-people *ngSwitchCase="'people'" [people]="asSwapiType(item | async)"></app-people>
-      <app-planet *ngSwitchCase="'planets'" [planet]="asSwapiType(item | async)"></app-planet>
-      <app-species *ngSwitchCase="'species'" [species]="asSwapiType(item | async)"></app-species>
-      <app-starship *ngSwitchCase="'starships'" [starship]="asSwapiType(item | async)"></app-starship>
-      <app-vehicle *ngSwitchCase="'vehicles'" [vehicle]="asSwapiType(item | async)"></app-vehicle>
-
+    <small>&darr;(scroll me)&darr;</small>
+    <app-film *ngSwitchCase="'films'" [film]="asSwapiType(item | async)"></app-film>
+    <app-people *ngSwitchCase="'people'" [people]="asSwapiType(item | async)"></app-people>
+    <app-planet *ngSwitchCase="'planets'" [planet]="asSwapiType(item | async)"></app-planet>
+    <app-species *ngSwitchCase="'species'" [species]="asSwapiType(item | async)"></app-species>
+    <app-starship *ngSwitchCase="'starships'" [starship]="asSwapiType(item | async)"></app-starship>
+    <app-vehicle *ngSwitchCase="'vehicles'" [vehicle]="asSwapiType(item | async)"></app-vehicle>
   </div>
 </div>
