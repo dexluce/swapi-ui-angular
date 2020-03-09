@@ -1,3 +1,7 @@
+/**
+ * This is not used anymore
+ */
+
 import { Directive, ElementRef, HostListener, Input, Renderer2, AfterViewInit } from '@angular/core';
 import { style, animate, AnimationPlayer, AnimationBuilder, AnimationMetadata } from '@angular/animations';
 import { MatSnackBar } from '@angular/material/snack-bar';

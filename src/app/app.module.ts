@@ -31,7 +31,6 @@ import { swapiReducer } from './store/swapi.reducers';
 import { environment } from 'src/environments/environment';
 import { SwapiItemToReadableNamePipe } from './pipes/swapi-item-to-readable-name.pipe';
 import { ResolveItemFromUrlPipe } from './pipes/resolve-item-from-url.pipe';
-import { StarWarsScrollEffectDirective } from './directives/star-wars-scroll-effect.directive';
 import { GetIdFromItemPipe } from './pipes/get-id-from-item.pipe';
 import { GetTypeFromItemPipe } from './pipes/get-type-from-item.pipe';
 import { ItemComponent } from './components/items/item.component';
@@ -54,7 +53,6 @@ import { UrlsListToReadableClickableItemsComponent } from './components/items/ur
     SwapiListLayoutComponent,
     SwapiItemToReadableNamePipe,
     ResolveItemFromUrlPipe,
-    StarWarsScrollEffectDirective,
     GetIdFromItemPipe,
     GetTypeFromItemPipe,
     FilmComponent,
