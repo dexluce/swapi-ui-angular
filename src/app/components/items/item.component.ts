@@ -19,8 +19,10 @@ export class ItemComponent implements AfterViewInit, OnDestroy {
   private top = 0; // The current offset of the start wars text
   private isPlaying = false; // While we are player the animation we can't allow the user to scroll. This because angular doesn't implement player.setPosition / player.getPosition yet
   private animation: AnimationMetadata[] = [
-    style({ top: '71%' }),
-    animate('1s linear', style({ top: 0 }))
+    style({ top: "75%" }),
+    animate(".5s", style({ top: "71%" })),
+    animate(".5s", style({ top: "71%" })),
+    animate(".5s", style({ top: 0 }))
   ];
 
   // The max offset, adapted to the size of the text displayed
