@@ -11,11 +11,11 @@
   It has a cargo capacity of <b>{{starship.cargo_capacity}}</b> and can hold <b>{{starship.consumables}}</b> without refill.<br/>
   It's a <b>{{starship.starship_class}}</b> with a hyperdrive rate of <b>{{starship.hyperdrive_rating}}</b> and a MGLT of <b>{{starship['MGLT']}}</b>.
 </p>
-<p>
+<p *ngIf="starship.pilots.length">
   Amongst its pilot we can find :<br/>
   <app-urls-list-to-readable-clickable-items [listOfUrls]="starship.pilots"></app-urls-list-to-readable-clickable-items>
 </p>
-<p>
+<p *ngIf="starship.films.length">
   We can see this starship in a few <b>films</b> :<br/>
   <app-urls-list-to-readable-clickable-items [listOfUrls]="starship.films"></app-urls-list-to-readable-clickable-items>
 </p>

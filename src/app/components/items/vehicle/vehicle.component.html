@@ -6,17 +6,17 @@
   {{vehicle | swapiItemToReadableName}} model name is <b>{{vehicle.model}}</b>.<br/>
   It has been manufactured by <b>{{vehicle.manufacturer}}</b> for a total cost of
   <b>{{vehicle.cost_in_credits}}credits</b>.<br/>
-  Its lenght is <b>{{vehicle.length}}</b>.<br/>
+  Its length is <b>{{vehicle.length}}</b>.<br/>
   Its max speed in atmospher is <b>{{vehicle.max_atmosphering_speed}}</b>.<br/>
   Its crew number is <b>{{vehicle.crew}}</b>, and he can transport <b>{{vehicle.passengers}}</b> passengers.<br/>
   It has a cargo capacity of <b>{{vehicle.cargo_capacity}}</b> and can hold <b>{{vehicle.consumables}}</b> without refill.<br/>
   It's a <b>{{vehicle.vehicle_class}}</b>.
 </p>
-<p>
+<p *ngIf="vehicle.pilots.length">
   Amongst its pilot we can find :<br/>
   <app-urls-list-to-readable-clickable-items [listOfUrls]="vehicle.pilots"></app-urls-list-to-readable-clickable-items>
 </p>
-<p>
+<p *ngIf="vehicle.films.length">
   We can see this vehicle in a few <b>films</b> :<br/>
   <app-urls-list-to-readable-clickable-items [listOfUrls]="vehicle.films"></app-urls-list-to-readable-clickable-items>
 </p>

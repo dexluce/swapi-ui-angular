@@ -16,11 +16,11 @@
   .<br/>
   They speak <b>{{species.language}}</b>
 </p>
-<p>
+<p *ngIf="species.people.length">
   There is a few <b>characters</b> belonging to {{species | swapiItemToReadableName}} :<br/>
   <app-urls-list-to-readable-clickable-items [listOfUrls]="species.people"></app-urls-list-to-readable-clickable-items>
 </p>
-<p>
+<p *ngIf="species.films.length">
   We can see people of these species in a few <b>films</b> :<br/>
   <app-urls-list-to-readable-clickable-items [listOfUrls]="species.films"></app-urls-list-to-readable-clickable-items>
 </p>

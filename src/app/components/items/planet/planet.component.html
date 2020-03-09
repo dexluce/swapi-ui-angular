@@ -13,11 +13,11 @@
   population : {{planet.population}}<br/>
 
 </p>
-<p>
+<p *ngIf="planet.films.length">
   You can see {{planet | swapiItemToReadableName}} in a few <b>star wars movies</b> :<br/>
   <app-urls-list-to-readable-clickable-items [listOfUrls]="planet.films"></app-urls-list-to-readable-clickable-items>
 </p>
-<p>
+<p *ngIf="planet.residents.length">
   A few star wars <b>characters</b> walked on this planet :<br/>
   <app-urls-list-to-readable-clickable-items [listOfUrls]="planet.residents"></app-urls-list-to-readable-clickable-items>
 </p>

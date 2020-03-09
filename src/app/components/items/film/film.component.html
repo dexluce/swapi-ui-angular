@@ -9,23 +9,23 @@
   It's been directed by <b>{{film.director}}</b> and produced by <b>{{film.producer}}</b>.<br/>
   Released in theatre in <b>{{film.release_date}}</b><br/>
 </p>
-<p>
+<p *ngIf="film.characters.length">
   Watching this film, you'll meet following <b>characters</b> :<br/>
   <app-urls-list-to-readable-clickable-items [listOfUrls]="film.characters"></app-urls-list-to-readable-clickable-items>
 </p>
-<p>
+<p *ngIf="film.planets.length">
   You'll discover following <b>planets</b> :<br/>
   <app-urls-list-to-readable-clickable-items [listOfUrls]="film.planets"></app-urls-list-to-readable-clickable-items>
 </p>
-<p>
+<p *ngIf="film.starships.length">
   You'll see in action following <b>starships</b> :<br/>
   <app-urls-list-to-readable-clickable-items [listOfUrls]="film.starships"></app-urls-list-to-readable-clickable-items>
 </p>
-<p>
+<p *ngIf="film.vehicles.length">
   You'll ride with following <b>vehicles</b> :<br/>
   <app-urls-list-to-readable-clickable-items [listOfUrls]="film.vehicles"></app-urls-list-to-readable-clickable-items>
 </p>
-<p>
+<p *ngIf="film.species.length">
   And you'll encounter those <b>spieces</b> :<br/>
   <app-urls-list-to-readable-clickable-items [listOfUrls]="film.species"></app-urls-list-to-readable-clickable-items>
 </p>

@@ -11,19 +11,19 @@
     {{people.homeworld | resolveItemFromUrl | async | swapiItemToReadableName}}
   </a>
 </p>
-<p>
+<p *ngIf="people.films.length">
   {{people | swapiItemToReadableName}} is in a few <b>star wars movies</b> :<br/>
   <app-urls-list-to-readable-clickable-items [listOfUrls]="people.films"></app-urls-list-to-readable-clickable-items>
 </p>
-<p>
+<p *ngIf="people.species.length">
   {{people | swapiItemToReadableName}} belongs to <b>species</b> :<br/>
   <app-urls-list-to-readable-clickable-items [listOfUrls]="people.species"></app-urls-list-to-readable-clickable-items>
 </p>
-<p>
+<p *ngIf="people.vehicles.length">
   {{people | swapiItemToReadableName}} can drive those <b>vehicles</b> :<br/>
   <app-urls-list-to-readable-clickable-items [listOfUrls]="people.vehicles"></app-urls-list-to-readable-clickable-items>
 </p>
-<p>
+<p *ngIf="people.starships.length">
   {{people | swapiItemToReadableName}} fly in a few <b>starships</b> :<br/>
   <app-urls-list-to-readable-clickable-items [listOfUrls]="people.starships"></app-urls-list-to-readable-clickable-items>
 </p>
