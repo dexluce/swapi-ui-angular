@@ -1,9 +1,9 @@
-import { Component, OnDestroy, ElementRef, Renderer2, HostListener, ViewChild, AfterViewInit, ViewChildren } from '@angular/core';
+import { Component, OnDestroy, ElementRef, Renderer2, HostListener, ViewChild, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
 import { Item, Film, People, Vehicle, Planet, Species, Starship } from 'src/app/models';
 import { SwapiService } from 'src/app/services';
-import { AnimationBuilder, AnimationPlayer, AnimationMetadata, style, animate } from '@angular/animations';
+import { AnimationBuilder, AnimationMetadata, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-item',
@@ -26,18 +26,19 @@ export class ItemComponent implements AfterViewInit, OnDestroy {
   // The max offset, adapted to the size of the text displayed
   get topLimite() {
     if (this.container === undefined || this.starWarsScroll === undefined) return -100;
+    // This is something of a magic number. First "89" is not 100 because we are not in full height. And we want a few lines to be kept in screen
+    // plus iscompensate the "perspective" css off 100px. 
+    // Second, "0.90630791931" is there because of the rotation of 25deg on X. Would be 1 is no rotation
     else return -(this.starWarsScroll.nativeElement.offsetHeight * 89) / (this.container.nativeElement.offsetHeight * 0.90630791931);
   }
 
   @HostListener("window:wheel", ["$event"]) onScroll(e: WheelEvent) {
     if (this.isPlaying || this.starWarsScroll === undefined) return;
-    console.log(this.topLimite)
     if (e.deltaY > 0) {
       if (this.top !> this.topLimite) this.top = this.top - 1;
     } else {
       if (this.top !< 71) this.top = this.top + 1;
     }
-    console.log(this.top)
     this.renderer.setStyle(this.starWarsScroll.nativeElement, "top", `${this.top}%`)
   }
 
