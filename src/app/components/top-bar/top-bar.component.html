@@ -1,5 +1,13 @@
 <div class="container">
-  <p class="title">Swapi API search | an angular implementation</p>
+  <p class="title">
+    <a [routerLink]="['']">
+      Swapi API search
+    </a>
+     | 
+    <a href="https://github.com/dexluce/swapi-ui-angular" target="_blank" rel="noopener">
+      an angular implementation
+    </a>
+  </p>
   <mat-progress-spinner
     *ngIf="isLoading | async"
     mode="indeterminate"
