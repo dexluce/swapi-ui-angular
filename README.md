@@ -16,7 +16,8 @@ The call to Swapi are conditionnal for better network perf. SwapiService will ge
 
 ## Missing features
 
-- [/] Styling/CSS
+- [x] Styling/CSS
+- [ ] Responsive design
 - [x] Resolving items urls in item details
 - [ ] add an autocomplete to the search input
 - [ ] Paginate the search (we only get first page right now)
