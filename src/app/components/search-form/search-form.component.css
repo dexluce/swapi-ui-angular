@@ -6,13 +6,14 @@
   /* You can also add some margins here to make it look prettier */
 }
 .filters__button {
+  width: 35px;
   cursor: pointer;
   background-color: transparent;
-  font-size: 100%;
+  font-size: 10px;
   font-family: inherit;
   border: 0;
   padding: 0;
-  margin: 8px;
+  margin: 6px;
 }
 .filters__button__icon {
   width: 35px;

@@ -1,12 +1,20 @@
-<input (keydown.enter)="searchChanged($event.target.value)">
+<input
+  (keydown.enter)="searchChanged($event.target.value)"
+  placeholder="search"
+>
 <ul class="filters">
   <li *ngFor="let type of (_swapiType | keyvalue); let i = index">
-    <button (click)="filterChanged(type.key)"
-      [title]="type.key"
-      class="filters__button">
-      <img [src]="'assets/star-wars-icons/' + type.key + '.svg'"
+    <button
+      (click)="filterChanged(type.key)"
+      [title]="type.value"
+      class="filters__button"
+    >
+      <img
+        [src]="'assets/star-wars-icons/' + type.key + '.svg'"
         class="filters__button__icon"
-        [ngClass]="{'filters__button__icon--active': (filters | async)[type.key]}"/>
+        [ngClass]="{'filters__button__icon--active': (filters | async)[type.key]}"
+      />
+      {{type.value}}
     </button>
   </li>
 </ul>
