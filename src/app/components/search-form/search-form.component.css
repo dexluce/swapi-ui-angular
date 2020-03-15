@@ -1,7 +1,24 @@
-ul {
+.filters {
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: nowrap;
   /* You can also add some margins here to make it look prettier */
+}
+.filters__button {
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 100%;
+  font-family: inherit;
+  border: 0;
+  padding: 0;
+  margin: 8px;
+}
+.filters__button__icon {
+  width: 35px;
+  height: 35px;
+
+}
+.filters__button__icon--active {
+  filter: saturate(10000%);
 }

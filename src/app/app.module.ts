@@ -7,7 +7,6 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
@@ -76,7 +75,6 @@ import { UrlsListToReadableClickableItemsComponent } from './components/items/ur
       maxAge: 25,
       logOnly: environment.production,
     }),
-    MatSlideToggleModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
   ],
